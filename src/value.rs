@@ -975,6 +975,8 @@ bind_array_values!(
     NaiveTime,
     "with-chrono"
 );
+
+
 bind_array_values!(
     is_time_date_time,
     is_date_time_array,
@@ -982,6 +984,7 @@ bind_array_values!(
     NaiveDateTime,
     "with-chrono"
 );
+
 bind_array_values!(
     is_time_date_time_with_time_zone,
     is_date_time_with_time_zone_array,
@@ -996,13 +999,13 @@ bind_array_values!(
     Decimal,
     "with-rust_decimal"
 );
-// bind_array_values!( //@todo support
-//     is_big_decimal,
-//     is_big_decimal_array,
-//     as_big_decimal_ref_array,
-//     BigDecimal,
-//     "with-bigdecimal"
-// );
+bind_array_values!( //@todo support
+    is_big_decimal,
+    is_big_decimal_array,
+    as_big_decimal_ref_array,
+    BigDecimal,
+    "with-bigdecimal"
+);
 bind_array_values!(is_uuid, is_uuid_array, as_uuid_ref_array, Uuid, "with-uuid");
 
 impl IntoIterator for ValueTuple {

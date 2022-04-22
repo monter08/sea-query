@@ -42,7 +42,16 @@ macro_rules! bind_params_sqlx_postgres {
                         query.bind(value.as_ref_time_time())
                     } else if value.is_time_date_time() {
                         query.bind(value.as_ref_time_date_time())
-                    } else if value.is_chrono_date_time_with_time_zone() {
+                    } else if value.is_chrono_date() {
+                         query.bind(value.as_ref_chrono_date())
+                    }
+                    else if value.is_chrono_date_time() {
+                        query.bind(value.as_ref_chrono_date_time())
+                    }
+                    else if value.is_chrono_date_time_utc() {
+                        query.bind(value.as_ref_chrono_date_time_utc())
+                    }
+                    else if value.is_chrono_date_time_with_time_zone() {
                         query.bind(value.as_ref_chrono_date_time_with_time_zone())
                     } else if value.is_decimal() {
                         query.bind(value.as_ref_decimal())
@@ -97,9 +106,11 @@ macro_rules! bind_params_sqlx_postgres {
                         else if value.is_uuid_array() {
                             query.bind(value.as_uuid_ref_array())
                         } else {
+                            println!("unimplemented value: {:?}", value);
                             unimplemented!();
                         }
                     } else {
+                        println!("unimplemented value: {:?}", value);
                         unimplemented!();
                     }
                 }
