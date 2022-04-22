@@ -845,6 +845,7 @@ is_primitives!(is_float, Float);
 is_primitives!(is_double, Double);
 is_primitives!(is_string, String);
 
+
 macro_rules! bind_array_values {
     ( $is_ty: ident, $is_ty_array: ident, $as_ty_ref_array: ident, $ty: ty, $feature: literal ) => {
         impl Value {
@@ -961,28 +962,28 @@ bind_array_values!(
 );
 bind_array_values!(is_json, is_json_array, as_json_ref_array, Json, "with-json");
 bind_array_values!(
-    is_date,
+    is_time_date,
     is_date_array,
     as_date_ref_array,
     NaiveDate,
     "with-chrono"
 );
 bind_array_values!(
-    is_time,
+    is_time_time,
     is_time_array,
     as_time_ref_array,
     NaiveTime,
     "with-chrono"
 );
 bind_array_values!(
-    is_date_time,
+    is_time_date_time,
     is_date_time_array,
     as_date_time_ref_array,
     NaiveDateTime,
     "with-chrono"
 );
 bind_array_values!(
-    is_date_time_with_time_zone,
+    is_time_date_time_with_time_zone,
     is_date_time_with_time_zone_array,
     as_date_time_with_time_zone_ref_array,
     DateTime<FixedOffset>,
@@ -995,13 +996,13 @@ bind_array_values!(
     Decimal,
     "with-rust_decimal"
 );
-bind_array_values!(
-    is_big_decimal,
-    is_big_decimal_array,
-    as_big_decimal_ref_array,
-    BigDecimal,
-    "with-bigdecimal"
-);
+// bind_array_values!( //@todo support
+//     is_big_decimal,
+//     is_big_decimal_array,
+//     as_big_decimal_ref_array,
+//     BigDecimal,
+//     "with-bigdecimal"
+// );
 bind_array_values!(is_uuid, is_uuid_array, as_uuid_ref_array, Uuid, "with-uuid");
 
 impl IntoIterator for ValueTuple {

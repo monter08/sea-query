@@ -57,7 +57,7 @@ pub fn bind_params_sqlx_postgres_impl(input: TokenStream) -> TokenStream {
     };
 
     let with_postgres_array = if cfg!(feature = "postgres-array") {
-        quote! { Value::Array(_) => unimplemented!("SQLx array is not supported"), }
+        quote! { Value::Array(_) => unimplemented!("SQLx array is not dupa supported"), }
     } else {
         quote! {}
     };
